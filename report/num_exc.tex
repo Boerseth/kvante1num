@@ -1,0 +1,442 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Frode T. Børseth}
+\date{\today}
+\title{Numerical exercise\\FY2045 Quantum Mechanics}
+\begin{document}
+\maketitle
+
+\section{Introduction}
+The one-dimensional Schr\"odinger equation in position space of a particle with mass $m$ subject to a potential $V$ reads
+\begin{equation}
+	\mathrm{i} \hbar \frac{\partial}{\partial t}
+	\Psi ( x, t)
+	=
+	- \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}
+	\Psi (x, t)
+	+
+	V(x)
+	\Psi (x, t) \label{eq:Sch}
+\end{equation}
+and is the object of interest in this exercise.
+
+The wave function is generally complex, crucially so when considering its time evolution, and we may consider the real and imaginary components distinct functions,
+\begin{equation}
+	\Psi = \Psi_R + \mathrm{i} \Psi_I,
+\end{equation}
+all of which in general are functions of position $x$ and time $t$. The function $\Psi_I$ in particular is real valued. Inserting this into equation \ref{eq:Sch} gives
+\begin{align*}
+	\mathrm{i} \hbar \frac{\partial}{\partial t}
+	\Big(
+	\Psi_R + \mathrm{i}\Psi_I
+	\Big)
+	&=
+	- \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}
+	\Big(
+	\Psi_R + \mathrm{i}\Psi_I
+	\Big)
+	+
+	V
+	\Big(
+	\Psi_R + \mathrm{i}\Psi_I
+	\Big)\\
+	\Rightarrow \;
+	- \hbar \frac{\partial}{\partial t}
+	\Psi_I
+	+
+	\mathrm{i} \hbar \frac{\partial}{\partial t}
+	\Psi_R
+	&=
+	- \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}
+	\Psi_R
+	+
+	V\Psi_R 
+	+
+	\mathrm{i}
+	\Big(
+	-
+	\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}
+	\Psi_I
+	+ 
+	\mathrm{i}
+	V\Psi_I
+	\Big)
+\end{align*}
+
+This can then be separated into two equations, one for the real component and one for the imaginary:
+\begin{align}
+	- \hbar \frac{\partial}{\partial t} \Psi_I
+	&=
+	- \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}
+	\Psi_R
+	+
+	V
+	\Psi_R\\
+	\hbar \frac{\partial}{\partial t} \Psi_R
+	&=
+	- \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}
+	\Psi_I
+	+
+	V
+	\Psi_I
+\end{align}
+This is a set of partial differential equations, containing the \emph{real} functions $\Psi_R$ and $\Psi_I$.
+
+Our strategy will be do discretize the problem. First of all, restrict the particle to the region $0 \leq x \leq L$. Then, evaluate the wave function at $N_x+1$ points on this interval, and use these points and values of $\Psi$ to approximate the continuous solution.
+
+The discretization leads to a one-dimensional mesh of $x$ values, a distance $\Delta x$ apart, which can be expressed as $x_n = n\Delta x$. The same applies for time, which changes step by step in increments of $\Delta t$. The different discrete times at which we evaluate $\Psi$ are $t_m = m\Delta t$.
+
+Let us now for simplicity write the different functions at each discrete point and time in the following way:
+\begin{align}
+	\Psi_R^{n,m} &= \Psi_R(x_n,t_m) = \Psi_R(n\Delta x,m\Delta t)\\
+	\Psi_I^{n,m} &= \Psi_I(x_n,t_m) = \Psi_I(n\Delta x,m\Delta t)\\
+	V^n &= V(x_n) = V(n\Delta x) \quad \quad \text{(assuming non-varying potential)}
+\end{align}
+With this, we can write down the discretized partial derivatives as
+\begin{align}
+	\frac{\partial \Psi_F}{\partial t} (x_n,t_m)
+	&\approx
+	\frac{1}{\Delta t} \Big( \Psi_F^{n,m+1} - \Psi_F^{n,m}\Big)\\
+	\frac{\partial^2 \Psi_F}{\partial x^2} (x_n,t_m)
+	&\approx
+	\frac{1}{\Delta x^2} \Big( \Psi_F^{n+1,m} - 2\Psi_F^{n,m} + \Psi_F^{ n-1,m} \Big)\\
+\end{align}
+leading to a discrete version of the above system of equations,
+\begin{align}
+	- 
+	\frac{\hbar}{\Delta t} \Big( \Psi_I^{n,m+1} - \Psi_I^{n,m}\Big)
+	&=
+	- \frac{\hbar^2}{2m}
+	\frac{1}{\Delta x^2}
+	\Big(
+		\Psi_R^{n+1,m} - 2\Psi_R^{n,m} + \Psi_R^{ n-1,m}
+	\Big)
+	+
+	V^n
+	\Psi_R^{n,m}\\
+	\frac{\hbar}{\Delta t} \Big( \Psi_R^{n,m+1} - \Psi_R^{n,m}\Big)
+	&=
+	- \frac{\hbar^2}{2m}
+	\frac{1}{\Delta x^2}
+	\Big(
+		\Psi_I^{n+1,m} - 2\Psi_I^{n,m} + \Psi_I^{ n-1,m}
+	\Big)
+	+
+	V^n
+	\Psi_I^{n,m}
+\end{align}
+which in turn, finally, gives us a way to see how this system changes from  $t_m$ to $t_{m+1}$:
+\begin{align}
+	\Psi_I^{n,m+1}
+	&=
+	\Psi_I^{n,m}
+	+
+	\frac{\hbar}{2m}
+	\frac{\Delta t}{\Delta x^2}
+	\Big(
+		\Psi_R^{n+1,m} - 2\Psi_R^{n,m} + \Psi_R^{ n-1,m}
+	\Big)
+	+
+	\frac{\Delta t}{\hbar}
+	V^n
+	\Psi_R^{n,m}\\
+	\Psi_R^{n,m+1}
+	&=
+	\Psi_R^{n,m}
+	- \frac{\hbar}{2m}
+	\frac{\Delta t}{\Delta x^2}
+	\Big(
+		\Psi_I^{n+1,m} - 2\Psi_I^{n,m} + \Psi_I^{ n-1,m}
+	\Big)
+	+
+	\frac{\Delta t}{\hbar}
+	V^n
+	\Psi_I^{n,m}
+\end{align}
+
+Now I want to rephraze this iteration scheme in the language of matrix vectors and products. Let us define a sequence of vectors $\psi_R^{m}$,
+\begin{equation}
+	\psi_R^{m} = ( \Psi_R^{0,m}, \ldots , \Psi_R^{N_x + 1,m} ) ^T
+\end{equation}
+that is, the vectors $\psi_R^0, \psi_R^1, \ldots , \psi_R^m, \ldots$ containing in index $n$ the value of $\Psi_R^{n,m}$. Then, for the tridiagonal matrix $K$,
+\begin{equation}
+	K
+	=
+	\left(
+	\begin{matrix}
+		-2 &  1 &   &\\
+		 1 & -2 & \ddots &\\
+		   &  \ddots & \ddots &1\\
+		   &    & 1 & -2
+	\end{matrix}
+	\right)
+\end{equation}
+we may write the parenthesis above as the $n$th element of the matrix product $K\psi_R^m$.
+\begin{equation}
+	\Big(K \psi_R^m\Big)_n
+	=
+	\Psi_R^{n+1,m} - 2\Psi_R^{n,m} + \Psi_R^{ n-1,m}
+\end{equation}
+Similarly, defining the matrix $P$,
+\begin{equation}
+	P
+	=
+	\left(
+	\begin{matrix}
+		V^0 &  &   &\\
+		 & V^1 &  &\\
+		   &  & \ddots &\\
+		   &    & & V^{N_x + 1}
+	\end{matrix}
+	\right)
+\end{equation}
+we may write $V^n\Psi_R^{n,m}$ as a matrix product as well, as the $n$th element of the vector given by $P \psi_R^m$
+\begin{equation}
+	\Big(P \psi_R^m\Big)_n
+	=
+	V^n\Psi_R^{n,m}
+\end{equation}
+Inserting this, I will rewrite the above relations between one time and the next as matrix relations.
+\begin{align}
+	\psi_I^{m+1}
+	&=
+	I \psi_I^m
+	+
+	\frac{\hbar}{2m}\frac{\Delta t}{\Delta x ^2}
+	K \psi_R^m
+	+
+	\frac{\Delta t}{\hbar}
+	P \psi_R^m\\
+	\psi_R^{m+1}
+	&=
+	I \psi_R^m
+	-
+	\frac{\hbar}{2m}\frac{\Delta t}{\Delta x ^2}
+	K \psi_I^m
+	+
+	\frac{\Delta t}{\hbar}
+	P \psi_I^m
+\end{align}
+or, defining new scaled matrices
+\begin{align}
+	D &= \frac{\hbar}{2m}\frac{\Delta t}{\Delta x ^2} K\\
+	V &= \frac{\Delta t}{\hbar} P
+\end{align}
+we can write this in a shorter way,
+\begin{align}
+	\psi_I^{m+1}
+	&=
+	I \psi_I^m
+	+
+	D \psi_R^m
+	+
+	V \psi_R^m\\
+	\psi_R^{m+1}
+	&=
+	I \psi_R^m
+	-
+	D \psi_I^m
+	+
+	V \psi_I^m
+\end{align}
+
+This is a set of two linear equations with two unknown vectors. If we think of $\psi_R^{m+1}$ and $\psi_I^{m+1}$ as actually being one vector, with the two vectors standing on top of eachother, we can rewrite the whole thing as one giant matrix equation:
+\begin{equation}
+	\left(
+	\begin{matrix}
+	\psi_R^{m+1} \\
+	\psi_I^{m+1}
+	\end{matrix}
+	\right)
+	=
+	\left(
+	\begin{matrix}
+	I   & V-D\\
+	V+D & I
+	\end{matrix}
+	\right)
+	\cdot
+	\left(
+	\begin{matrix}
+	\psi_R^{m} \\
+	\psi_I^{m}
+	\end{matrix}
+	\right)
+\end{equation}
+
+We might have done this slightly differently, however. If we had evaluated the right hand side of the Schr\"odinger equation at time $t_{m+1}$ instead of $t_m$, we would have gotten
+\begin{align}
+	\psi_I^{m+1}
+	-
+	D \psi_R^{m+1}
+	-
+	V \psi_R^{m+1}
+	&=
+	I \psi_I^m\\
+	\psi_R^{m+1}
+	+
+	D \psi_I^{m+1}
+	-
+	V \psi_I^{m+1}
+	&=
+	I \psi_R^m
+\end{align}
+Leading to a slightly different final matrix equation.
+\begin{equation}
+	\left(
+	\begin{matrix}
+		I   & D-V\\
+		-D-V & I
+	\end{matrix}
+	\right)
+	\cdot
+	\left(
+	\begin{matrix}
+		\psi_R^{m+1} \\
+		\psi_I^{m+1}
+	\end{matrix}
+	\right)
+	=
+	\left(
+	\begin{matrix}
+		\psi_R^{m} \\
+		\psi_I^{m}
+	\end{matrix}
+	\right)
+\end{equation}
+To solve this for the next, $(m+1)$th, wave vector, we must here take the inverse of the matrix on the left. Fortunately, as long as the potential does not vary, we only need to do this once.
+\begin{equation}
+	\left(
+	\begin{matrix}
+		\psi_R^{m+1} \\
+		\psi_I^{m+1}
+	\end{matrix}
+	\right)
+	=
+	\left(
+	\begin{matrix}
+		I   & D-V\\
+		-D-V & I
+	\end{matrix}
+	\right)^{-1}
+	\cdot
+	\left(
+	\begin{matrix}
+		\psi_R^{m} \\
+		\psi_I^{m}
+	\end{matrix}
+	\right)
+\end{equation}
+I will test both approaches to see if there is any difference in stability.
+
+\begin{align*}
+f(x,y) \quad = \quad
+\Bigg(
+\left( 
+\frac{11.6 - x}{5} 
+\right)^{10} 
+& \Big( 
+ \exp \left( - 10 \left(1.879(x-10.2)^2 -0.644(x-10.2)(y-13.0) + 1.395(y-13.0)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(0.826(x-9.1)^2 + 0.341(x-9.1)(y-11.3) + 0.308(y-11.3)^2  \right)^{16} \right)
+\\ &+ 
+ \exp \left( - 10 \left(1.374(x-9.2)^2 + 0.186(x-9.2)(y-10.0) + 0.453(y-10.0)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(1.140(x-9.4)^2 -0.229(x-9.4)(y-8.4) + 1.094(y-8.4)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(1.562(x-9.35)^2 -0.393(x-9.35)(y-7.0) + 0.416(y-7.0)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(6.925(x-9.1)^2 -6.037(x-9.1)(y-11.95) + 1.777(y-11.95)^2  \right)^{10} \right)
+ \Big) 
+\\ + 
+\left( 
+\frac{9.6 - x + 0.3y}{5} 
+\right)^{10} 
+& \Big( 
+ \exp \left( - 10 \left(2.777(x-8.85)^2 -1.418(x-8.85)(y-5.1) + 1.0(y-5.1)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(6.25(x-8.6)^2 -4.862(x-8.6)(y-3.9) + 1.562(y-3.9)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(7.304(x-8.0)^2 -5.752(x-8.0)(y-2.6) + 6.25(y-2.6)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(7.160(x-8.45)^2 + 5.925(x-8.45)(y-2.6) + 8.888(y-2.6)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(5.655(x-8.9)^2 -8.275(x-8.9)(y-2.6) + 14.34(y-2.6)^2  \right)^{10} \right)
+ \Big) 
+\\ + 
+\left( 
+\frac{14.6 - x}{18} 
+\right)^{10} 
+& \Big( 
+ \exp \left( - 10 \left(1.140(x-9.2)^2 -0.229(x-9.2)(y-8.4) + 1.094(y-8.4)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(0.497(x-10.7)^2 -0.852(x-10.7)(y-8.6) + 1.392(y-8.6)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(3.305(x-12.0)^2 + 0.0(x-12.0)(y-8.25) + 0.64(y-8.25)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(8.163(x-12.1)^2 -1.482(x-12.1)(y-7.0) + 0.826(y-7.0)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(11.11(x-12.0)^2 -8.230(x-12.0)(y-5.8) + 4.938(y-5.8)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(4.711(x-12.4)^2 -4.266(x-12.4)(y-6.2) + 10.4(y-6.2)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(10.0(x-12.9)^2 -12.0(x-12.9)(y-6.4) + 10.0(y-6.4)^2  \right)^{10} \right)
+ \Big) 
+\\ + 
+\left( 
+\frac{3.1 - x + y}{10} 
+\right)^{10} 
+& \Big( 
+ \exp \left( - 10 \left(1.777(x-10.1)^2 + 0.159(x-10.1)(y-11.5) + 2.366(y-11.5)^2  \right)^{8} \right)
+\\ &+ 
+ \exp \left( - 10 \left(1.777(x-11.2)^2 + -0.0(x-11.2)(y-11.5) + 2.777(y-11.5)^2  \right)^{8} \right)
+\\ &+ 
+ \exp \left( - 10 \left(4.0(x-12.2)^2 -3.085(x-12.2)(y-11.8) + 3.305(y-11.8)^2  \right)^{8} \right)
+\\ &+ 
+ \exp \left( - 10 \left(11.21(x-12.7)^2 -7.719(x-12.7)(y-12.4) + 3.106(y-12.4)^2  \right)^{10} \right)
+\\ &+ 
+ \exp \left( - 10 \left(6.25(x-12.85)^2 + 3.925(x-12.85)(y-13.55) + 3.305(y-13.55)^2  \right)^{8} \right)
+ \Big) 
+\\ + 
+\left( 
+\frac{6.82 - 2.2x + y}{3.0} 
+\right)^{10} 
+& \Big( 
+ \exp \left( - 10 \left(3.305(x-8.4)^2 + 0.204(x-8.4)(y-12.75) + 1.777(y-12.75)^2  \right)^{8} \right)
+\\ &+ 
+ \exp \left( - 10 \left(4.340(x-8.75)^2 -3.700(x-8.75)(y-13.75) + 2.366(y-13.75)^2  \right)^{8} \right)
+\\ &+ 
+ \exp \left( - 10 \left(8.163(x-9.2)^2 -7.415(x-9.2)(y-15.1) + 2.601(y-15.1)^2  \right)^{8} \right)
+\\ &+ 
+ \exp \left( - 10 \left(25.0(x-9.6)^2 + 17.85(x-9.6)(y-16.5) + 6.25(y-16.5)^2  \right)^{8} \right)
+ \Big) 
+\\ &+ 
+\frac{7.461 - x + y}{19.40} \exp \left( - 10 \left(0.029(x-15.0)^2 + 0.029(y-18.7)^2  \right)^{40} \right)
+\\ &+ 
+\frac{1}{2} \exp \left( - 10 e^{ 16\left( y - (100x^2 + 280x-3579)/2625 \right) } \right) 
+\Bigg)^{1/10}
+\end{align*}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
