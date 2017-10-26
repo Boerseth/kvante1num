@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.5.4)  12 OCT 2017 18:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.5.4)  25 OCT 2017 14:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -526,42 +526,198 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 11.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (160.05983pt too wide) in paragraph at lines 422--422
+{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (92.50075pt too wide) in paragraph at lines 131--131
 [] 
  []
 
-[3] [4]
-Overfull \vbox (109.40762pt too high) has occurred while \output is active []
+
+Overfull \hbox (46.68118pt too wide) in paragraph at lines 159--159
+[] 
+ []
+
+[2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 256--257
+
+ []
 
 
-[5] (./num_exc.aux) ) 
+Underfull \hbox (badness 10000) in paragraph at lines 258--260
+
+ []
+
+[4
+
+] <./img/prob1a1.png, id=29, 925.4575pt x 608.2725pt>
+File: ./img/prob1a1.png Graphic file (type png)
+
+<use ./img/prob1a1.png>
+Package pdftex.def Info: ./img/prob1a1.png used on input line 318.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+ <./img/prob1b1.png, id=31, 925.4575pt x 608.2725pt>
+File: ./img/prob1b1.png Graphic file (type png)
+
+<use ./img/prob1b1.png>
+Package pdftex.def Info: ./img/prob1b1.png used on input line 320.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+ <./img/prob1a2.png, id=32, 907.39pt x 608.2725pt>
+File: ./img/prob1a2.png Graphic file (type png)
+
+<use ./img/prob1a2.png>
+Package pdftex.def Info: ./img/prob1a2.png used on input line 321.
+(pdftex.def)             Requested size: 137.9979pt x 92.5085pt.
+ <./img/prob1b2.png, id=33, 907.39pt x 608.2725pt>
+File: ./img/prob1b2.png Graphic file (type png)
+
+<use ./img/prob1b2.png>
+Package pdftex.def Info: ./img/prob1b2.png used on input line 323.
+(pdftex.def)             Requested size: 137.9979pt x 92.5085pt.
+ [5
+
+] [6 <./img/prob1a1.png> <./img/prob1b1.png> <./img/prob1a2.png> <./img/prob1b2
+.png>]
+<./img/prob2-01a.png, id=45, 904.37875pt x 608.2725pt>
+File: ./img/prob2-01a.png Graphic file (type png)
+
+<use ./img/prob2-01a.png>
+Package pdftex.def Info: ./img/prob2-01a.png used on input line 344.
+(pdftex.def)             Requested size: 137.9979pt x 92.81479pt.
+
+<./img/prob2-01b.png, id=46, 925.4575pt x 608.2725pt>
+File: ./img/prob2-01b.png Graphic file (type png)
+
+<use ./img/prob2-01b.png>
+Package pdftex.def Info: ./img/prob2-01b.png used on input line 346.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+
+<./img/prob2-02a.png, id=47, 925.4575pt x 608.2725pt>
+File: ./img/prob2-02a.png Graphic file (type png)
+
+<use ./img/prob2-02a.png>
+Package pdftex.def Info: ./img/prob2-02a.png used on input line 347.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+
+<./img/prob2-02b.png, id=48, 925.4575pt x 608.2725pt>
+File: ./img/prob2-02b.png Graphic file (type png)
+
+<use ./img/prob2-02b.png>
+Package pdftex.def Info: ./img/prob2-02b.png used on input line 349.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+
+<./img/prob2-03a.png, id=49, 925.4575pt x 608.2725pt>
+File: ./img/prob2-03a.png Graphic file (type png)
+
+<use ./img/prob2-03a.png>
+Package pdftex.def Info: ./img/prob2-03a.png used on input line 350.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+
+<./img/prob2-03b.png, id=50, 925.4575pt x 608.2725pt>
+File: ./img/prob2-03b.png Graphic file (type png)
+
+<use ./img/prob2-03b.png>
+Package pdftex.def Info: ./img/prob2-03b.png used on input line 352.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+
+<./img/prob2-04a.png, id=51, 925.4575pt x 608.2725pt>
+File: ./img/prob2-04a.png Graphic file (type png)
+
+<use ./img/prob2-04a.png>
+Package pdftex.def Info: ./img/prob2-04a.png used on input line 353.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+
+<./img/prob2-04b.png, id=52, 925.4575pt x 608.2725pt>
+File: ./img/prob2-04b.png Graphic file (type png)
+
+<use ./img/prob2-04b.png>
+Package pdftex.def Info: ./img/prob2-04b.png used on input line 355.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+
+<./img/prob2-20a.png, id=53, 925.4575pt x 608.2725pt>
+File: ./img/prob2-20a.png Graphic file (type png)
+
+<use ./img/prob2-20a.png>
+Package pdftex.def Info: ./img/prob2-20a.png used on input line 356.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+
+<./img/prob2-20b.png, id=54, 925.4575pt x 608.2725pt>
+File: ./img/prob2-20b.png Graphic file (type png)
+
+<use ./img/prob2-20b.png>
+Package pdftex.def Info: ./img/prob2-20b.png used on input line 358.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+
+<./img/prob2-weirda.png, id=55, 925.4575pt x 608.2725pt>
+File: ./img/prob2-weirda.png Graphic file (type png)
+
+<use ./img/prob2-weirda.png>
+Package pdftex.def Info: ./img/prob2-weirda.png used on input line 372.
+(pdftex.def)             Requested size: 137.9979pt x 90.69861pt.
+
+<./img/prob2-weirdb.png, id=56, 933.4875pt x 608.2725pt>
+File: ./img/prob2-weirdb.png Graphic file (type png)
+
+<use ./img/prob2-weirdb.png>
+Package pdftex.def Info: ./img/prob2-weirdb.png used on input line 374.
+(pdftex.def)             Requested size: 137.9979pt x 89.91896pt.
+ [7
+
+] [8 <./img/prob2-01a.png> <./img/prob2-01b.png> <./img/prob2-02a.png> <./img/p
+rob2-02b.png> <./img/prob2-03a.png> <./img/prob2-03b.png> <./img/prob2-04a.png>
+ <./img/prob2-04b.png> <./img/prob2-20a.png> <./img/prob2-20b.png>] [9 <./img/p
+rob2-weirda.png> <./img/prob2-weirdb.png>]
+<./img/prob3.png, id=79, 925.4575pt x 608.2725pt>
+File: ./img/prob3.png Graphic file (type png)
+ <use ./img/prob3.png>
+Package pdftex.def Info: ./img/prob3.png used on input line 389.
+(pdftex.def)             Requested size: 207.0021pt x 136.04791pt.
+
+[10
+
+ <./img/prob3.png>] <./img/prob4.png, id=84, 911.405pt x 640.3925pt>
+File: ./img/prob4.png Graphic file (type png)
+
+<use ./img/prob4.png>
+Package pdftex.def Info: ./img/prob4.png used on input line 407.
+(pdftex.def)             Requested size: 207.0021pt x 145.4501pt.
+ [11
+
+ <./img/prob4.png>]
+<./img/prob5.png, id=89, 911.405pt x 637.38126pt>
+File: ./img/prob5.png Graphic file (type png)
+ <use ./img/prob5.png>
+Package pdftex.def Info: ./img/prob5.png used on input line 425.
+(pdftex.def)             Requested size: 207.0021pt x 144.76617pt.
+
+[12
+
+ <./img/prob5.png>] (./num_exc.aux) ) 
 Here is how much of TeX's memory you used:
- 2685 strings out of 494946
- 33711 string characters out of 6180982
- 112258 words of memory out of 5000000
- 5937 multiletter control sequences out of 15000+600000
- 11234 words of font info for 44 fonts, out of 8000000 for 9000
+ 2792 strings out of 494946
+ 35813 string characters out of 6180982
+ 99318 words of memory out of 5000000
+ 6022 multiletter control sequences out of 15000+600000
+ 11402 words of font info for 45 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,12n,24p,316b,199s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-ex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/
-msbm10.pfb>
-Output written on num_exc.pdf (5 pages, 142519 bytes).
+ 38i,12n,24p,578b,231s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/symbols/msbm10.pfb>
+Output written on num_exc.pdf (12 pages, 2059791 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
+ 142 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
